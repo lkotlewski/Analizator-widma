@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StartWindowBase</class>
+ <widget class="QMainWindow" name="StartWindowBase">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_analize">
+    <property name="title">
+     <string>Analiza widmowa</string>
+    </property>
+    <addaction name="fast_analize_action"/>
+    <addaction name="complex_analize_action"/>
+   </widget>
+   <addaction name="menu_analize"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="fast_analize_action">
+   <property name="text">
+    <string>Szybka analiza</string>
+   </property>
+  </action>
+  <action name="complex_analize_action">
+   <property name="text">
+    <string>Dokładna analiza</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
