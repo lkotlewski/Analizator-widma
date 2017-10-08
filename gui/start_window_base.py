@@ -22,7 +22,6 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-
 class Ui_StartWindowBase(object):
     def setupUi(self, StartWindowBase):
         StartWindowBase.setObjectName(_fromUtf8("StartWindowBase"))
@@ -33,7 +32,6 @@ class Ui_StartWindowBase(object):
         self.menubar = QtGui.QMenuBar(StartWindowBase)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 25))
         self.menubar.setObjectName(_fromUtf8("menubar"))
-        self.menubar.setNativeMenuBar(False)
         self.menu_analize = QtGui.QMenu(self.menubar)
         self.menu_analize.setObjectName(_fromUtf8("menu_analize"))
         StartWindowBase.setMenuBar(self.menubar)
@@ -52,7 +50,7 @@ class Ui_StartWindowBase(object):
         QtCore.QMetaObject.connectSlotsByName(StartWindowBase)
 
     def retranslateUi(self, StartWindowBase):
-        StartWindowBase.setWindowTitle(_translate("StartWindowBase", "MainWindow", None))
+        StartWindowBase.setWindowTitle(_translate("StartWindowBase", "Analizator widma", None))
         self.menu_analize.setTitle(_translate("StartWindowBase", "Analiza widmowa", None))
         self.fast_analize_action.setText(_translate("StartWindowBase", "Szybka analiza", None))
         self.complex_analize_action.setText(_translate("StartWindowBase", "Dokładna analiza", None))

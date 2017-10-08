@@ -10,6 +10,8 @@ class StartWindow(QtGui.QMainWindow):
         QtGui.QWidget.__init__(self, parent)
         self.ui = Ui_StartWindowBase()
         self.ui.setupUi(self)
+        self.ui.menubar.setNativeMenuBar(False)
+        self.setStyleSheet("background-image: url(start_background.jpg)")
 
         QtCore.QObject.connect(self.ui.fast_analize_action, QtCore.SIGNAL("triggered()"), self.fast_analize)
 
