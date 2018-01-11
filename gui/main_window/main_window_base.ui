@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindowBase</class>
+ <widget class="QMainWindow" name="MainWindowBase">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>859</width>
+    <height>676</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Analizator widma</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>859</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Nawigacja</string>
+    </property>
+    <addaction name="mode_choice_action"/>
+    <addaction name="back_to_analyse_action"/>
+   </widget>
+   <addaction name="menu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="mode_choice_action">
+   <property name="text">
+    <string>Powrót do wyboru trybu</string>
+   </property>
+  </action>
+  <action name="complex_analize_action">
+   <property name="text">
+    <string>Dokładna analiza</string>
+   </property>
+  </action>
+  <action name="back_to_analyse_action">
+   <property name="text">
+    <string>Powrót do analizy</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
