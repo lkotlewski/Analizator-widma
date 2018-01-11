@@ -34,10 +34,9 @@ class BandwidthScanner(gr.top_block):
         self.signals_on_all_freq = []
         self.fft_mag_on_all_freq = []
         self.power_distribution = []
-        self.power_distribution2 = []
         self.strongest_signals_indices = []
         self.number_of_indices_to_remember = number_of_indices_to_remember
-        self.sleep_time_after_tuning = 0.18
+        self.sleep_time_for_tuning = 0.18
 
         ##################################################dow
         # Blocks
@@ -89,7 +88,7 @@ class BandwidthScanner(gr.top_block):
         freq_count = len(freq_vector)
         while freq_index < freq_count:
             self.tune_to_freq(freq_vector[freq_index])
-            time.sleep(self.sleep_time_after_tuning)
+            time.sleep(self.sleep_time_for_tuning)
             signal_on_current_freq = self.block_probe_raw_signal.level()
             self.signals_on_all_freq.append(signal_on_current_freq)
             power = self.calculate_power(signal_on_current_freq)
@@ -153,7 +152,7 @@ class BandwidthScanner(gr.top_block):
         out_file = open(out_filepath, "w")
         cPickle.dump(self.strongest_signals_indices, out_file)
         cPickle.dump(self.signals_on_all_freq, out_file)
-        cPickle.dump(self.power_distribution2, out_file)
+        cPickle.dump(self.power_distribution, out_file)
         cPickle.dump(freq_vector, out_file)
         # configuration parameters
         cPickle.dump(self.samp_rate, out_file)
