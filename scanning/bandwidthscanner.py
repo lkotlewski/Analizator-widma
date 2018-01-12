@@ -31,14 +31,14 @@ class BandwidthScanner(gr.top_block):
         self.window_size = window_size
         self.raw_signal = []
         self.fft_mag = []
-        self.signals_on_all_freq = []
+        self.signals_on_all_freqs = []
         self.fft_mag_on_all_freq = []
         self.power_distribution = []
         self.strongest_signals_indices = []
         self.number_of_indices_to_remember = number_of_indices_to_remember
-        self.sleep_time_for_tuning = 0.18
+        self.sleep_time_for_tuning = 0.
 
-        ##################################################dow
+        ##################################################
         # Blocks
         ##################################################
         self.rtlsdr_source = osmosdr.source(args="numchan=" + str(1) + " " + '')
@@ -90,7 +90,7 @@ class BandwidthScanner(gr.top_block):
             self.tune_to_freq(freq_vector[freq_index])
             time.sleep(self.sleep_time_for_tuning)
             signal_on_current_freq = self.block_probe_raw_signal.level()
-            self.signals_on_all_freq.append(signal_on_current_freq)
+            self.signals_on_all_freqs.append(signal_on_current_freq)
             power = self.calculate_power(signal_on_current_freq)
             self.power_distribution.append(power)
             self.remember_strongest_signals_indices(power, freq_index)
@@ -151,7 +151,7 @@ class BandwidthScanner(gr.top_block):
         out_filepath = os.path.join(dir_path, Analyser.MEASUREMENTS_DIRECTORY_NAME, out_filename)
         out_file = open(out_filepath, "w")
         cPickle.dump(self.strongest_signals_indices, out_file)
-        cPickle.dump(self.signals_on_all_freq, out_file)
+        cPickle.dump(self.signals_on_all_freqs, out_file)
         cPickle.dump(self.power_distribution, out_file)
         cPickle.dump(freq_vector, out_file)
         # configuration parameters
@@ -170,7 +170,7 @@ class BandwidthScanner(gr.top_block):
         out_file = open(out_filepath, "w")
         params_dict = {}
         params_dict['strongest_signals_indices'] = self.strongest_signals_indices
-        params_dict['signals_on_all_freq'] = self.signals_on_all_freq
+        params_dict['signals_on_all_freq'] = self.signals_on_all_freqs
         params_dict['power_distribution'] = self.power_distribution
         params_dict['freq_vector'] = freq_vector
         params_dict['samp_rate'] = self.samp_rate
